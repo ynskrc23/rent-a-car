@@ -5,6 +5,7 @@ import com.karaca.rentacar.business.dto.requests.update.UpdateRentalRequest;
 import com.karaca.rentacar.business.dto.responses.create.CreateRentalResponse;
 import com.karaca.rentacar.business.dto.responses.get.Rental.GetAllRentalsResponse;
 import com.karaca.rentacar.business.dto.responses.get.Rental.GetRentalResponse;
+import com.karaca.rentacar.business.dto.responses.get.Rental.RentalsResponse;
 import com.karaca.rentacar.business.dto.responses.update.UpdateRentalResponse;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface RentalService {
     List<GetAllRentalsResponse> findAllThanDailyPrice(Float dailyPrice);
 
     List<GetAllRentalsResponse> findAllOrderByTotalPriceASC();
+
+    RentalsResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 }

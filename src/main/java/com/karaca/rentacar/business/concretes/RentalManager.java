@@ -1,6 +1,6 @@
 package com.karaca.rentacar.business.concretes;
 
-import com.karaca.rentacar.entities.concretes.Car;
+import com.karaca.rentacar.business.dto.responses.get.Rental.RentalsResponse;
 import com.karaca.rentacar.entities.concretes.Rental;
 import com.karaca.rentacar.entities.enums.State;
 import com.karaca.rentacar.repository.abstracts.RentalRepository;
@@ -20,9 +20,12 @@ import com.karaca.rentacar.business.rules.RentalBusinessRules;
 import com.karaca.rentacar.common.dto.CreateRentalPaymentRequest;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -155,5 +158,33 @@ public class RentalManager implements RentalService {
                 .stream()
                 .map(rental -> mapper.map(rental, GetAllRentalsResponse.class))
                 .toList();
+    }
+
+    @Override
+    public RentalsResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        // create Pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        Page<Rental> page = repository.findAll(pageable);
+
+        List<Rental> rentals = page.getContent();
+
+        List<GetRentalResponse> content = rentals
+                .stream()
+                .map(rental -> mapper.map(rental, GetRentalResponse.class))
+                .toList();
+
+        RentalsResponse rentalsResponse = new RentalsResponse();
+        rentalsResponse.setContent(content);
+        rentalsResponse.setPageNo(page.getNumber());
+        rentalsResponse.setPageSize(page.getSize());
+        rentalsResponse.setTotalElements(page.getTotalElements());
+        rentalsResponse.setTotalPages(page.getTotalPages());
+        rentalsResponse.setLast(page.isLast());
+
+        return rentalsResponse;
     }
 }
