@@ -1,6 +1,5 @@
 package com.karaca.rentacar.repository.abstracts;
 
-import com.karaca.rentacar.business.dto.responses.get.Rental.RentalsResponse;
 import com.karaca.rentacar.entities.concretes.Rental;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

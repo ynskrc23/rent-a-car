@@ -1,5 +1,6 @@
 package com.karaca.rentacar.business.dto.responses.get.Maintenance;
 
+import com.karaca.rentacar.entities.concretes.Car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

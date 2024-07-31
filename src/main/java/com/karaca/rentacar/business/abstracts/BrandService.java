@@ -26,12 +26,6 @@ public interface BrandService {
     GetBrandResponse findByName(String name);
 
     List<GetAllBrandsResponse> findByNameContaining(String name);
-    //@Configuration
-    //@Service
-    //@Repository
-    //@Component
-
-    // @Bean -- method
 }
 
 

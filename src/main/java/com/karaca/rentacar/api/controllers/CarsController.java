@@ -5,6 +5,7 @@ import com.karaca.rentacar.business.dto.requests.create.CreateCarRequest;
 import com.karaca.rentacar.business.dto.requests.update.UpdateCarRequest;
 import com.karaca.rentacar.business.dto.responses.create.CreateCarResponse;
 import com.karaca.rentacar.business.dto.responses.get.Car.GetAllCarsResponse;
+import com.karaca.rentacar.business.dto.responses.get.Reports.GetAllCarReportsResponse;
 import com.karaca.rentacar.business.dto.responses.get.Car.GetCarResponse;
 import com.karaca.rentacar.business.dto.responses.get.Maintenance.GetAllMaintenanceResponse;
 import com.karaca.rentacar.business.dto.responses.update.UpdateCarResponse;
@@ -71,5 +72,10 @@ public class CarsController {
     @GetMapping("/findByPlateOrModelYearSQLIndexParam")
     public GetCarResponse findByPlateOrModelYearSQLIndexParam(@RequestParam("plate") String plate, @RequestParam("modelYear") int modelYear) {
         return service.findByPlateOrModelYearSQLIndexParam(plate,modelYear);
+    }
+
+    @GetMapping("/carReportsModelId")
+    public List<GetAllCarReportsResponse> carReportsModelId(@RequestParam("modelId") int modelId) {
+        return service.carReportsModelId(modelId);
     }
 }

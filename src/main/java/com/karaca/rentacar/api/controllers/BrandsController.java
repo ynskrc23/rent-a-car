@@ -8,7 +8,6 @@ import com.karaca.rentacar.business.dto.responses.get.Brand.GetAllBrandsResponse
 import com.karaca.rentacar.business.dto.responses.get.Brand.GetBrandResponse;
 import com.karaca.rentacar.business.dto.responses.get.Model.GetAllModelsResponse;
 import com.karaca.rentacar.business.dto.responses.update.UpdateBrandResponse;
-import com.karaca.rentacar.entities.concretes.Brand;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

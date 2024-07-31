@@ -1,18 +1,14 @@
-package com.karaca.rentacar.business.dto.responses.get.Brand;
+package com.karaca.rentacar.business.dto.responses.get.Reports;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetAllBrandsResponse {
-    private int id;
+public class GetAllBrandReportsResponse {
     private String name;
-    private Date createdAt;
 }

@@ -14,11 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "invoices")
-public class Invoice {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Invoice extends BaseEntity {
     private String cardHolder;
     private String modelName;
     private String brandName;

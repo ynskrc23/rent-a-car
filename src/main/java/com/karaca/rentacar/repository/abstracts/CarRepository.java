@@ -4,7 +4,6 @@ import com.karaca.rentacar.entities.concretes.Car;
 import com.karaca.rentacar.entities.enums.State;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -21,4 +20,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     // Define Native SQL query using @Query annotation with index or position parameters
     @Query(value = "select * from cars c where c.plate = ?1 or c.model_year = ?2", nativeQuery = true)
     Car findByPlateOrModelYearSQLIndexParam(String plate, int modelYear);
+
+    @Query(value = "SELECT * FROM cars c WHERE c.model_id = :modelId", nativeQuery = true)
+    List<Car> carReportsModelId(int modelId);
 }

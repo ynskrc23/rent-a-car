@@ -1,5 +1,6 @@
 package com.karaca.rentacar.business.concretes;
 
+import com.karaca.rentacar.business.dto.responses.get.Reports.GetAllCarReportsResponse;
 import com.karaca.rentacar.entities.concretes.Car;
 import com.karaca.rentacar.entities.enums.State;
 import com.karaca.rentacar.repository.abstracts.CarRepository;
@@ -122,5 +123,15 @@ public class CarManager implements CarService {
     public GetCarResponse findByPlateOrModelYearSQLIndexParam(String plate, int modelYear) {
         Car car = repository.findByPlateOrModelYearSQLIndexParam(plate,modelYear);
         return mapper.map(car, GetCarResponse.class);
+    }
+
+    @Override
+    public List<GetAllCarReportsResponse> carReportsModelId(int modelId) {
+        List<Car> cars = repository.carReportsModelId(modelId);
+
+        return cars
+                .stream()
+                .map(car -> mapper.map(car, GetAllCarReportsResponse.class))
+                .toList();
     }
 }

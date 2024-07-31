@@ -15,11 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "maintenances")
-public class Maintenance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+public class Maintenance extends BaseEntity{
     private String information;
     private boolean isCompleted;
     private LocalDateTime startDate;
@@ -28,6 +24,4 @@ public class Maintenance {
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
-
-
 }

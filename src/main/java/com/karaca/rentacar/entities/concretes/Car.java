@@ -16,10 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "cars")
-public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Car extends BaseEntity{
     private int modelYear;
     private String plate;
     private double dailyPrice;

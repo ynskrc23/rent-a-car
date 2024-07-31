@@ -12,16 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "payments")
-public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Payment extends BaseEntity{
     private int cardExpirationMonth;
     private int cardExpirationYear;
     private String cardNumber;
     private String cardHolder;
     private String cardCvv;
     private double balance;
-
-
 }

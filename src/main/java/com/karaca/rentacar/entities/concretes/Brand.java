@@ -15,10 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "brands")
-public class Brand {
-    @Id // Primary Key -> PK
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Brand extends BaseEntity {
     private String name;
 
     // @JsonBackReference

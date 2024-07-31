@@ -1,6 +1,6 @@
 package com.karaca.rentacar.business.abstracts;
 
-import com.karaca.rentacar.entities.concretes.Car;
+import com.karaca.rentacar.business.dto.responses.get.Reports.GetAllCarReportsResponse;
 import com.karaca.rentacar.entities.enums.State;
 import com.karaca.rentacar.business.dto.requests.create.CreateCarRequest;
 import com.karaca.rentacar.business.dto.requests.update.UpdateCarRequest;
@@ -31,6 +31,8 @@ public interface CarService {
     List<GetAllCarsResponse> findByModelYearBetween(int my1, int my2);
     GetCarResponse findByPlateOrNameJPQLIndexParam(String plate, String name);
     GetCarResponse findByPlateOrModelYearSQLIndexParam(String plate, int modelYear);
+
+    List<GetAllCarReportsResponse> carReportsModelId(int modelId);
 
     //@Configuration
     //@Service

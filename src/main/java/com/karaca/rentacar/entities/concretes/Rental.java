@@ -48,11 +48,7 @@ import java.time.LocalDateTime;
     }
 )
 
-public class Rental {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+public class Rental extends BaseEntity{
     private int rentedForDays;
     private double dailyPrice;
     private double totalPrice; //read-only
@@ -61,6 +57,4 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
-
-
 }

@@ -1,6 +1,8 @@
 package com.karaca.rentacar.business.concretes;
 
 import com.karaca.rentacar.business.dto.responses.get.Rental.RentalsResponse;
+import com.karaca.rentacar.common.constants.Messages;
+import com.karaca.rentacar.core.exceptions.BusinessException;
 import com.karaca.rentacar.entities.concretes.Rental;
 import com.karaca.rentacar.entities.enums.State;
 import com.karaca.rentacar.repository.abstracts.RentalRepository;
@@ -121,6 +123,7 @@ public class RentalManager implements RentalService {
     @Override
     public GetRentalResponse findByTotalPrice(Float totalPrice) {
         Rental rental = repository.findByTotalPrice(totalPrice);
+
         return mapper.map(rental, GetRentalResponse.class);
     }
 
