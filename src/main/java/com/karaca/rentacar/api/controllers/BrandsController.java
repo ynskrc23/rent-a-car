@@ -17,48 +17,57 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/brands")
-public class BrandsController {
+public class BrandsController
+{
     private final BrandService service;
 
     @GetMapping
-    public List<GetAllBrandsResponse> getAll() {
+    public List<GetAllBrandsResponse> getAll()
+    {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public GetBrandResponse getById(@PathVariable int id) {
+    public GetBrandResponse getById(@PathVariable int id)
+    {
         return service.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateBrandResponse add(@RequestBody CreateBrandRequest request) {
+    public CreateBrandResponse add(@RequestBody CreateBrandRequest request)
+    {
         return service.add(request);
     }
 
     @PutMapping("/{id}")
-    public UpdateBrandResponse update(@PathVariable int id, @RequestBody UpdateBrandRequest request) {
+    public UpdateBrandResponse update(@PathVariable int id, @RequestBody UpdateBrandRequest request)
+    {
         return service.update(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable int id)
+    {
         service.delete(id);
     }
 
     @GetMapping("/models-of-{id}")
-    public List<GetAllModelsResponse> getModels(@PathVariable int id) {
+    public List<GetAllModelsResponse> getModels(@PathVariable int id)
+    {
         return service.showModels(id);
     }
 
     @GetMapping("/findByName/{name}")
-    public GetBrandResponse findByName(@PathVariable String name) {
+    public GetBrandResponse findByName(@PathVariable String name)
+    {
         return service.findByName(name);
     }
 
     @GetMapping("/findByNameContaining/{name}")
-    public List<GetAllBrandsResponse> findByNameLike(@PathVariable String name) {
+    public List<GetAllBrandsResponse> findByNameLike(@PathVariable String name)
+    {
         return service.findByNameContaining(name);
     }
 }

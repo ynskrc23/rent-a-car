@@ -7,7 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface RentalRepository extends JpaRepository<Rental, Integer> {
+public interface RentalRepository extends JpaRepository<Rental, Integer>
+{
     // Define Named JPQL query
     Rental findByTotalPrice(@Param("totalPrice") Float totalPrice);
     List<Rental> findAllOrderByDailyPriceDesc();

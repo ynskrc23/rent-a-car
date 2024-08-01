@@ -3,7 +3,8 @@ package com.karaca.rentacar.repository.abstracts;
 import com.karaca.rentacar.entities.concretes.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PaymentRepository extends JpaRepository<Payment, Integer> {
+public interface PaymentRepository extends JpaRepository<Payment, Integer>
+{
     Payment findByCardNumber(String cardNumber);
 
     boolean existsByCardNumber(String cardNumber);
