@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class BrandBusinessRules {
+public class BrandBusinessRules
+{
     private final BrandRepository repository;
 
     // Business rules
-    public void checkIfBrandExists(int id) {
+    public void checkIfBrandExists(int id)
+    {
         if (!repository.existsById(id)) throw new BusinessException(Messages.Brand.NotExists);
     }
 
-    public void checkIfBrandExistsByName(String name) {
+    public void checkIfBrandExistsByName(String name)
+    {
         if (repository.existsByNameIgnoreCase(name)) throw new BusinessException(Messages.Brand.Exists);
     }
 }

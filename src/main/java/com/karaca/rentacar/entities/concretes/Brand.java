@@ -15,7 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "brands")
-public class Brand extends BaseEntity {
+public class Brand extends BaseEntity
+{
     private String name;
 
     // @JsonBackReference

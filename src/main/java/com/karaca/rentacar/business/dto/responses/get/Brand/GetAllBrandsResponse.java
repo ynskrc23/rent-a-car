@@ -11,8 +11,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetAllBrandsResponse {
+public class GetAllBrandsResponse
+{
     private int id;
     private String name;
     private Date createdAt;
+    private Date updatedAt;
 }
