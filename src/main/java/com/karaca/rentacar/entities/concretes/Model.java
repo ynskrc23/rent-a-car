@@ -14,7 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "models")
-public class Model extends BaseEntity{
+public class Model extends BaseEntity
+{
     private String name;
 
     @ManyToOne

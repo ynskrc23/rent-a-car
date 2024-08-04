@@ -1,5 +1,6 @@
 package com.karaca.rentacar.business.concretes;
 
+import com.karaca.rentacar.entities.concretes.Brand;
 import com.karaca.rentacar.entities.concretes.Model;
 import com.karaca.rentacar.repository.abstracts.ModelRepository;
 import com.karaca.rentacar.business.abstracts.ModelService;
@@ -13,6 +14,7 @@ import com.karaca.rentacar.business.dto.responses.update.UpdateModelResponse;
 import com.karaca.rentacar.business.rules.ModelBusinessRules;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,15 +22,16 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ModelManager implements ModelService {
+public class ModelManager implements ModelService
+{
     private final ModelRepository repository;
     private final ModelMapper mapper;
     private final ModelBusinessRules rules;
 
     @Override
-    public List<GetAllModelsResponse> getAll() {
-        List<Model> models = repository.findAll();
-
+    public List<GetAllModelsResponse> getAll()
+    {
+        List<Model> models = repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         return models
                 .stream()
                 .map(model -> mapper.map(model, GetAllModelsResponse.class))
@@ -36,14 +39,16 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public GetModelResponse getById(int id) {
+    public GetModelResponse getById(int id)
+    {
         rules.checkIfModelExists(id);
         Model model = repository.findById(id).orElseThrow();
         return mapper.map(model, GetModelResponse.class);
     }
 
     @Override
-    public CreateModelResponse add(CreateModelRequest request) {
+    public CreateModelResponse add(CreateModelRequest request)
+    {
         rules.checkIfModelExistsByName(request.getName());
         Model model = mapper.map(request, Model.class);
         model.setId(0);
@@ -52,7 +57,8 @@ public class ModelManager implements ModelService {
     }
 
     @Override
-    public UpdateModelResponse update(int id, UpdateModelRequest request) {
+    public UpdateModelResponse update(int id, UpdateModelRequest request)
+    {
         rules.checkIfModelExists(id);
         Model model = mapper.map(request, Model.class);
         model.setId(id);
@@ -63,17 +69,17 @@ public class ModelManager implements ModelService {
 
 
     @Override
-    public void delete(int id) {
+    public void delete(int id)
+    {
         rules.checkIfModelExists(id);
         repository.deleteById(id);
     }
 
     @Override
-    public List<GetAllCarsResponse> showCars(int id) {
+    public List<GetAllCarsResponse> showCars(int id)
+    {
         Model model = repository.findById(id).orElseThrow();
         return model.getCars().stream()
                 .map(car -> mapper.map(car, GetAllCarsResponse.class)).toList();
     }
-
-
 }

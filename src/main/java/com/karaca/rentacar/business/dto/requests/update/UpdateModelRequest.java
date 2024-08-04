@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateModelRequest {
+public class UpdateModelRequest
+{
     private int brandId;
     private String name;
 }
