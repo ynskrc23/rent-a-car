@@ -6,11 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetCarResponse {
+public class GetCarResponse
+{
     private int id;
     private int modelId;
     private double dailyPrice;
@@ -19,5 +22,7 @@ public class GetCarResponse {
     private State state;
     private String modelName;
     private String modelBrandName;
+    private Date createdAt;
+    private Date updatedAt;
 }
 

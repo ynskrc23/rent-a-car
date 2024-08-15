@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CarBusinessRules {
+public class CarBusinessRules
+{
     private final CarRepository repository;
 
     // Business rules
-    public void checkIfCarExists(int id) {
+    public void checkIfCarExists(int id)
+    {
         if (!repository.existsById(id)) throw new BusinessException(Messages.Car.NotExists);
     }
 }

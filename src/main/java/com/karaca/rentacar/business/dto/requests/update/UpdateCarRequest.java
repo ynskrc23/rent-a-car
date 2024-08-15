@@ -10,7 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateCarRequest {
+public class UpdateCarRequest
+{
     private int modelId;
     private double dailyPrice;
     private int modelYear;

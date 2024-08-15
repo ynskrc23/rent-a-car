@@ -16,7 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "cars")
-public class Car extends BaseEntity{
+public class Car extends BaseEntity
+{
     private int modelYear;
     private String plate;
     private double dailyPrice;

@@ -12,32 +12,18 @@ import com.karaca.rentacar.business.dto.responses.update.UpdateCarResponse;
 
 import java.util.List;
 
-public interface CarService {
-    List<GetAllCarsResponse> getAll(boolean includeMaintenance);
-
+public interface CarService
+{
+    List<GetAllCarsResponse> getAll();
     GetCarResponse getById(int id);
-
     CreateCarResponse add(CreateCarRequest request);
-
     UpdateCarResponse update(int id, UpdateCarRequest request);
-
     void delete(int id);
-
     public void changeState(int carId, State state);
-
     List<GetAllMaintenanceResponse> showMaintenances(int id);
-
     List<GetAllCarsResponse> findByDailyPriceGreaterThanEqual(float price);
     List<GetAllCarsResponse> findByModelYearBetween(int my1, int my2);
     GetCarResponse findByPlateOrNameJPQLIndexParam(String plate, String name);
     GetCarResponse findByPlateOrModelYearSQLIndexParam(String plate, int modelYear);
-
     List<GetAllCarReportsResponse> carReportsModelId(int modelId);
-
-    //@Configuration
-    //@Service
-    //@Repository
-    //@Component
-
-    // @Bean -- method
 }

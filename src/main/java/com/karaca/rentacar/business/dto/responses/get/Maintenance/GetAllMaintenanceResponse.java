@@ -1,6 +1,5 @@
 package com.karaca.rentacar.business.dto.responses.get.Maintenance;
 
-import com.karaca.rentacar.entities.concretes.Car;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetAllMaintenanceResponse {
+public class GetAllMaintenanceResponse
+{
     private int id;
     private int carId;
     private String information;

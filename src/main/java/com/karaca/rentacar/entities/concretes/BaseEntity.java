@@ -12,7 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public class BaseEntity implements Serializable
+{
     @Id // Primary Key -> PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
