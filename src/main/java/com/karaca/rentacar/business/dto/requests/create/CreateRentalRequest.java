@@ -10,10 +10,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CreateRentalRequest {
+public class CreateRentalRequest
+{
     private int carId;
     private int rentedForDays;
     private double dailyPrice;
-
     private PaymentRequest paymentRequest;
 }

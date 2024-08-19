@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateRentalRequest {
+public class UpdateRentalRequest
+{
     private int carId;
     private int rentedForDays;
     private double dailyPrice;
     private LocalDateTime startDate;
-
 }

@@ -11,7 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RentalsResponse {
+public class RentalsResponse
+{
     private List<GetRentalResponse> content;
     private int pageNo;
     private int pageSize;

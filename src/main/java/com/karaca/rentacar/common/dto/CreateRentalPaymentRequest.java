@@ -9,12 +9,12 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRentalPaymentRequest {
-    private int cardExpirationMonth;
+public class CreateRentalPaymentRequest
+{
     private int cardExpirationYear;
+    private int cardExpirationMonth;
     private String cardNumber;
     private String cardholder;
     private String cardCvv;
     private double price;
-
 }

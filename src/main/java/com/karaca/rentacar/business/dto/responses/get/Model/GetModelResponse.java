@@ -11,7 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetModelResponse {
+public class GetModelResponse
+{
     private int id;
     private int brandId;
     private String name;

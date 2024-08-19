@@ -1,5 +1,6 @@
 package com.karaca.rentacar.business.abstracts;
 
-public interface PosService {
+public interface PosService
+{
     void pay();
 }

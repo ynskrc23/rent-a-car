@@ -13,7 +13,8 @@ public class PaymentBusinessRules {
     private final PaymentRepository repository;
 
     // Business rules
-    public void checkIfPaymentIsValid(CreateRentalPaymentRequest request) {
+    public void checkIfPaymentIsValid(CreateRentalPaymentRequest request)
+    {
         if (!repository.existsByCardNumberAndCardHolderAndCardExpirationYearAndCardExpirationMonthAndCardCvv(
                 request.getCardNumber(),
                 request.getCardholder(),
@@ -25,19 +26,22 @@ public class PaymentBusinessRules {
         }
     }
 
-    public void checkIfCardExists(String cardNumber) {
+    public void checkIfCardExists(String cardNumber)
+    {
         if (repository.existsByCardNumber(cardNumber)) {
             throw new BusinessException(Messages.Payment.CardNumberAlreadyExists);
         }
     }
 
-    public void checkIfPaymentExists(int id) {
+    public void checkIfPaymentExists(int id)
+    {
         if (repository.existsById(id)) {
             throw new BusinessException(Messages.Payment.NotFound);
         }
     }
 
-    public void checkIfBalanceIsEnough(double price, double balance) {
+    public void checkIfBalanceIsEnough(double price, double balance)
+    {
         if (balance < price) {
             throw new BusinessException(Messages.Payment.NotEnoughMoney);
         }

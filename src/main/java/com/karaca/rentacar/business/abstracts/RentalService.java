@@ -10,26 +10,17 @@ import com.karaca.rentacar.business.dto.responses.update.UpdateRentalResponse;
 
 import java.util.List;
 
-public interface RentalService {
+public interface RentalService
+{
     List<GetAllRentalsResponse> getAll();
-
     GetRentalResponse getById(int id);
-
     CreateRentalResponse add(CreateRentalRequest request);
-
     UpdateRentalResponse update(int id, UpdateRentalRequest request);
-
     void delete(int id);
-
     GetRentalResponse findByTotalPrice(Float totalPrice);
-
     List<GetAllRentalsResponse> findAllOrderByDailyPriceDesc();
-
     GetRentalResponse findByDailyPrice(Float dailyPrice);
-
     List<GetAllRentalsResponse> findAllThanDailyPrice(Float dailyPrice);
-
     List<GetAllRentalsResponse> findAllOrderByTotalPriceASC();
-
     RentalsResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 }

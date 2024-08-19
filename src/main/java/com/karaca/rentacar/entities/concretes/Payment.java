@@ -12,7 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "payments")
-public class Payment extends BaseEntity{
+public class Payment extends BaseEntity
+{
     private int cardExpirationMonth;
     private int cardExpirationYear;
     private String cardNumber;

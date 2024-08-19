@@ -14,11 +14,10 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentRequest {
-
+public class PaymentRequest
+{
     @Min(value = 2023)
     private int cardExpirationYear;
-
 
     @Max(value = 12)
     @Min(value = 1)

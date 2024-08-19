@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
-public class FakePosServiceAdapter implements PosService {
+public class FakePosServiceAdapter implements PosService
+{
     @Override
-    public void pay() {
-        boolean isPaymentSuccessful = new Random().nextBoolean();
+    public void pay()
+    {
+        boolean isPaymentSuccessful = true;
         if (!isPaymentSuccessful)
             throw new BusinessException(Messages.Payment.Failed);
     }

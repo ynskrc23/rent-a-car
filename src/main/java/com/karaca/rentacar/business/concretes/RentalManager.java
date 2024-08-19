@@ -1,8 +1,6 @@
 package com.karaca.rentacar.business.concretes;
 
 import com.karaca.rentacar.business.dto.responses.get.Rental.RentalsResponse;
-import com.karaca.rentacar.common.constants.Messages;
-import com.karaca.rentacar.core.exceptions.BusinessException;
 import com.karaca.rentacar.entities.concretes.Rental;
 import com.karaca.rentacar.entities.enums.State;
 import com.karaca.rentacar.repository.abstracts.RentalRepository;
@@ -33,7 +31,8 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class RentalManager implements RentalService {
+public class RentalManager implements RentalService
+{
     private final RentalRepository repository;
     private final ModelMapper mapper;
     private final CarService carService;
@@ -42,7 +41,8 @@ public class RentalManager implements RentalService {
     private final RentalBusinessRules rules;
 
     @Override
-    public List<GetAllRentalsResponse> getAll() {
+    public List<GetAllRentalsResponse> getAll()
+    {
         List<Rental> rentals = repository.findAll();
 
         return rentals
@@ -52,7 +52,8 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public GetRentalResponse getById(int id) {
+    public GetRentalResponse getById(int id)
+    {
         rules.checkIfRentalExists(id);
         Rental rental = repository.findById(id).orElseThrow();
 
@@ -60,7 +61,8 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public CreateRentalResponse add(CreateRentalRequest request) {
+    public CreateRentalResponse add(CreateRentalRequest request)
+    {
         rules.checkIfCarAvailable(carService.getById(request.getCarId()).getState());
         Rental rental = mapper.map(request, Rental.class);
         rental.setId(0);
@@ -86,7 +88,8 @@ public class RentalManager implements RentalService {
 
 
     @Override
-    public UpdateRentalResponse update(int id, UpdateRentalRequest request) {
+    public UpdateRentalResponse update(int id, UpdateRentalRequest request)
+    {
         rules.checkIfRentalExists(id);
         Rental rental = mapper.map(request, Rental.class);
         rental.setId(id);
@@ -96,18 +99,21 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id)
+    {
         rules.checkIfRentalExists(id);
         int carId = repository.findById(id).get().getCar().getId();
         carService.changeState(carId, State.AVAILABLE);
         repository.deleteById(id);
     }
 
-    public double getTotalPrice(Rental rental) {
+    public double getTotalPrice(Rental rental)
+    {
         return rental.getDailyPrice() * rental.getRentedForDays();
     }
 
-    private void createInvoiceRequest(CreateRentalRequest request, CreateInvoiceRequest invoiceRequest, Rental rental) {
+    private void createInvoiceRequest(CreateRentalRequest request, CreateInvoiceRequest invoiceRequest, Rental rental)
+    {
         GetCarResponse car = carService.getById(request.getCarId());
 
         invoiceRequest.setRentedAt(rental.getStartDate());
@@ -121,14 +127,16 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public GetRentalResponse findByTotalPrice(Float totalPrice) {
+    public GetRentalResponse findByTotalPrice(Float totalPrice)
+    {
         Rental rental = repository.findByTotalPrice(totalPrice);
 
         return mapper.map(rental, GetRentalResponse.class);
     }
 
     @Override
-    public List<GetAllRentalsResponse> findAllOrderByDailyPriceDesc() {
+    public List<GetAllRentalsResponse> findAllOrderByDailyPriceDesc()
+    {
         List<Rental> rentals = repository.findAllOrderByDailyPriceDesc();
 
         return rentals
@@ -138,13 +146,15 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public GetRentalResponse findByDailyPrice(Float dailyPrice) {
+    public GetRentalResponse findByDailyPrice(Float dailyPrice)
+    {
         Rental rental = repository.findByDailyPrice(dailyPrice);
         return mapper.map(rental, GetRentalResponse.class);
     }
 
     @Override
-    public List<GetAllRentalsResponse> findAllThanDailyPrice(Float dailyPrice) {
+    public List<GetAllRentalsResponse> findAllThanDailyPrice(Float dailyPrice)
+    {
         List<Rental> rentals = repository.findAllThanDailyPrice(dailyPrice);
 
         return rentals
@@ -154,7 +164,8 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public List<GetAllRentalsResponse> findAllOrderByTotalPriceASC() {
+    public List<GetAllRentalsResponse> findAllOrderByTotalPriceASC()
+    {
         List<Rental> rentals = repository.findAllOrderByTotalPriceASC();
 
         return rentals
@@ -164,7 +175,8 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public RentalsResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
+    public RentalsResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir)
+    {
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
                 : Sort.by(sortBy).descending();
 
