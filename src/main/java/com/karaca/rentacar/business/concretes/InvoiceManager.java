@@ -18,27 +18,30 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class InvoiceManager implements InvoiceService {
+public class InvoiceManager implements InvoiceService
+{
     private final InvoiceRepository repository;
     private final ModelMapper mapper;
     private final InvoiceBusinessRules rules;
 
     @Override
-    public List<GetAllInvoicesResponse> getAll() {
-
+    public List<GetAllInvoicesResponse> getAll()
+    {
         return repository.findAll().stream()
                 .map(invoice -> mapper.map(invoice, GetAllInvoicesResponse.class))
                 .toList();
     }
 
     @Override
-    public GetInvoiceResponse getById(int id) {
+    public GetInvoiceResponse getById(int id)
+    {
         Invoice invoice = repository.findById(id).orElseThrow();
         return mapper.map(invoice, GetInvoiceResponse.class);
     }
 
     @Override
-    public CreateInvoiceResponse add(CreateInvoiceRequest request) {
+    public CreateInvoiceResponse add(CreateInvoiceRequest request)
+    {
         Invoice invoice = mapper.map(request, Invoice.class);
         invoice.setId(0);
         invoice.setTotalPrice(getTotalPrice(invoice));
@@ -47,7 +50,8 @@ public class InvoiceManager implements InvoiceService {
     }
 
     @Override
-    public UpdateInvoiceResponse update(int id, UpdateInvoiceRequest request) {
+    public UpdateInvoiceResponse update(int id, UpdateInvoiceRequest request)
+    {
         rules.checkIfInvoiceExist(id);
         Invoice invoice = mapper.map(request, Invoice.class);
         invoice.setId(id);
@@ -57,17 +61,14 @@ public class InvoiceManager implements InvoiceService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id)
+    {
         rules.checkIfInvoiceExist(id);
-        ;
         repository.deleteById(id);
-
     }
 
-
-    private double getTotalPrice(Invoice invoice) {
+    private double getTotalPrice(Invoice invoice)
+    {
         return invoice.getDailyPrice() * invoice.getRentedForDays();
     }
-
-
 }

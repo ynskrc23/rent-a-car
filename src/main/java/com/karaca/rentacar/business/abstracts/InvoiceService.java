@@ -9,14 +9,11 @@ import com.karaca.rentacar.business.dto.responses.update.UpdateInvoiceResponse;
 
 import java.util.List;
 
-public interface InvoiceService {
+public interface InvoiceService
+{
     List<GetAllInvoicesResponse> getAll();
-
     GetInvoiceResponse getById(int id);
-
     CreateInvoiceResponse add(CreateInvoiceRequest request);
-
     UpdateInvoiceResponse update(int id, UpdateInvoiceRequest request);
-
     void delete(int id);
 }

@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateInvoiceResponse {
-
+public class CreateInvoiceResponse
+{
     private int id;
     private String cardHolder;
     private String modelName;
@@ -23,5 +23,4 @@ public class CreateInvoiceResponse {
     private double totalPrice;
     private int rentedForDays;
     private LocalDateTime rentedAt;
-
 }

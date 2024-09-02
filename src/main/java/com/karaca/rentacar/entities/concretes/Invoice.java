@@ -14,7 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "invoices")
-public class Invoice extends BaseEntity {
+public class Invoice extends BaseEntity
+{
     private String cardHolder;
     private String modelName;
     private String brandName;

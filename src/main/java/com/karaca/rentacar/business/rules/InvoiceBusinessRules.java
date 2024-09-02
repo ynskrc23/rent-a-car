@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class InvoiceBusinessRules {
+public class InvoiceBusinessRules
+{
     private final InvoiceRepository repository;
 
     // Business rules
-    public void checkIfInvoiceExist(int id) {
+    public void checkIfInvoiceExist(int id)
+    {
         if (!repository.existsById(id)) throw new BusinessException(Messages.Invoice.NotFound);
     }
 }

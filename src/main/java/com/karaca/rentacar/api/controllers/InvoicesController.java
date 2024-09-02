@@ -19,27 +19,32 @@ public class InvoicesController {
     private final InvoiceService service;
 
     @GetMapping
-    public List<GetAllInvoicesResponse> getAll() {
+    public List<GetAllInvoicesResponse> getAll()
+    {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public GetInvoiceResponse getById(@PathVariable int id) {
+    public GetInvoiceResponse getById(@PathVariable int id)
+    {
         return service.getById(id);
     }
 
     @PostMapping
-    public CreateInvoiceResponse add(@RequestBody CreateInvoiceRequest request) {
+    public CreateInvoiceResponse add(@RequestBody CreateInvoiceRequest request)
+    {
         return service.add(request);
     }
 
     @PutMapping("/{id}")
-    public UpdateInvoiceResponse update(@PathVariable int id, @RequestBody UpdateInvoiceRequest request) {
+    public UpdateInvoiceResponse update(@PathVariable int id, @RequestBody UpdateInvoiceRequest request)
+    {
         return service.update(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable int id)
+    {
         service.delete(id);
     }
 }
